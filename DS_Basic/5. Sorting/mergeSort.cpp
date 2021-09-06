@@ -37,6 +37,15 @@ void merge(int array[], int const left, int const mid, int const right)
 	}
 }
 
+void mergeSort(int array[], int const begin, int const end)
+{
+    if(end>begin){
+        int mid=begin+(end-begin)/2;
+        mergeSort(array,begin,mid);
+        mergeSort(array,mid+1,end);
+        merge(array,begin,mid,end);
+    }
+}
 
 
 void printArray(int A[], int size)
@@ -47,12 +56,14 @@ void printArray(int A[], int size)
 
 int main()
 {
+	// int arr[] = { 12, 11, 13, 5, 6, 7 };
 	int arr[]={1,3,5,7,2,4,6,8};
 	int arr_size = sizeof(arr)/sizeof(arr[0]);
 
 	cout << "Given array is \n";
 	printArray(arr, arr_size);
 
+	// mergeSort(arr, 0, arr_size - 1);
 	merge(arr,0,3,8);
 
 	cout << "\nSorted array is \n";
